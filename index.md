@@ -1,8 +1,8 @@
 ---
-title       : slidify 
-subtitle    : first try
-author      : me
-job         : yes please
+title       : 
+subtitle    : 
+author      : 
+job         : 
 framework   : io2012        # {io2012, html5slides, shower, dzslides, ...}
 highlighter : highlight.js  # {highlight.js, prettify, highlight}
 hitheme     : tomorrow      # 
@@ -12,46 +12,80 @@ knit        : slidify::knit2slides
 ---
 
 
+
+### http://www.r-bloggers.com/rstudio-pushing-to-github-with-ssh-authentication/
+If RStudio prompts you for a username and password every time you try to push your project to Github, open the shell (Git menu: More/Shel...) and do the following:
+
+
+git config --global user.name "john.b.gavin@gmail.com"
+git config --global user.email "john.b.gavin@gmail.com"
+ssh-keygen -t rsa -C "john.b.gavin@gmail.com" 
+
+Your identification has been saved in /home/rstudio/.ssh/id_rsa.
+Your public key has been saved in /home/rstudio/.ssh/id_rsa.pub.
+The key fingerprint is:
+
+In RStudio, go to menu Tools / Global options / Git SVN / View public key and copy the key to your Github account setting (Edit profile / SSH keys / Add SSH key).
+
+To check that ssh-authentication works, try to run
+ssh -T git@github.com
+
+git config remote.origin.url git@github.com:JohnGavin/slidifyTest.git
+
+
+
+## Slidify
+
+This step generates a html slide deck from index.Rmd. It is a static file, which means that you can open it in your browser locally and it should display fine.
+
+
 ```r
-library(slidify)
-library(slidifyLibraries)
-```
-
-## author
-
-create a new directory mydeck and add the necessary scaffolding. 
-If you have git installed, it will initialize it as a git repo, checkout its gh-pages branch, add and commit everything. 
-Finally, it will open index.Rmd for you to edit.
-
-```r
-author("mydeck")
+slidify("index.Rmd")
 ```
 
 ```
-## Creating slide directory at mydeck...
-## Copying files to mydeck...
-## Finished creating slide directory...
-## Switching to slide directory...
-## Initializing Git Repo
-## Checking out gh-pages branch...
-## Adding .nojekyll to repo
-## Opening slide deck...
+## 
+## 
+## processing file: index.Rmd
 ```
 
+```
+##   |                                                                         |                                                                 |   0%  |                                                                         |......................                                           |  33%
+##   ordinary text without R code
+## 
+##   |                                                                         |...........................................                      |  67%
+## label: unnamed-chunk-2
+##   |                                                                         |.................................................................| 100%
+##   ordinary text without R code
+```
+
+```
+## output file: index.md
+```
 ---
 
-## Slide 2
+## Publish
+Publish your deck to github. 
+Login with your github account and create a new repository. 
+Note that Github will prompt you to add a README file, but just use the defaults so that your repo is empty. 
+You will need to have git installed on your computer and be able to push to github using SSH
+
+# replace USER and REPO with your username and reponame
+publish(user = "john.b.gavin@gmail.com", repo = "slidifyTest")
+publish(user = "github.com", repo = "johngavin/slidifyTest", host = 'github')
+
+git@github.com:JohnGavin/slidifyTest.git
+https://github.com/JohnGavin/slidifyTest.git
+https://gmail.com.github.com/slidifyTest https://github.com/JohnGavin/slidifyTest
+
+https://johngavin.github.com/slidifyTest https://github.com/JohnGavin/slidifyTest
 
 ## Read-And-Delete
-Edit the YAML front matter (if you don't know what it is, just replace everything to the right of the : in the lines between the --- right at the top). Edit the deck, making sure to separate your slides by a blank line followed by three dashes ---.
 
 1. Edit YAML front matter
 2. Write using R Markdown
 3. Use an empty line followed by three dashes to separate slides!
 
+
 --- .class #id 
-
-
-
-
 

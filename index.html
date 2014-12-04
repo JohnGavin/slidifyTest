@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>slidify</title>
+  <title></title>
   <meta charset="utf-8">
-  <meta name="description" content="slidify">
-  <meta name="author" content="me">
+  <meta name="description" content="">
+  <meta name="author" content="">
   <meta name="generator" content="slidify" />
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta http-equiv="X-UA-Compatible" content="chrome=1">
@@ -32,9 +32,9 @@
     <!-- LOGO SLIDE -->
         <slide class="title-slide segue nobackground">
   <hgroup class="auto-fadein">
-    <h1>slidify</h1>
-    <h2>first try</h2>
-    <p>me<br/>yes please</p>
+    <h1></h1>
+    <h2></h2>
+    <p><br/></p>
   </hgroup>
   <article></article>  
 </slide>
@@ -42,42 +42,80 @@
 
     <!-- SLIDES -->
     <slide class="" id="slide-1" style="background:;">
-  <article data-timings="">
-    <pre><code class="r">library(slidify)
-library(slidifyLibraries)
-</code></pre>
-
-<h2>author</h2>
-
-<p>create a new directory mydeck and add the necessary scaffolding. 
-If you have git installed, it will initialize it as a git repo, checkout its gh-pages branch, add and commit everything. 
-Finally, it will open index.Rmd for you to edit.</p>
-
-<pre><code class="r">author(&quot;mydeck&quot;)
-</code></pre>
-
-<pre><code>## Creating slide directory at mydeck...
-## Copying files to mydeck...
-## Finished creating slide directory...
-## Switching to slide directory...
-## Initializing Git Repo
-## Checking out gh-pages branch...
-## Adding .nojekyll to repo
-## Opening slide deck...
-</code></pre>
-
-  </article>
-  <!-- Presenter Notes -->
-</slide>
-
-<slide class="" id="slide-2" style="background:;">
   <hgroup>
-    <h2>Slide 2</h2>
+    <h3><a href="http://www.r-bloggers.com/rstudio-pushing-to-github-with-ssh-authentication/">http://www.r-bloggers.com/rstudio-pushing-to-github-with-ssh-authentication/</a></h3>
   </hgroup>
   <article data-timings="">
-    <h2>Read-And-Delete</h2>
+    <p>If RStudio prompts you for a username and password every time you try to push your project to Github, open the shell (Git menu: More/Shel...) and do the following:</p>
 
-<p>Edit the YAML front matter (if you don&#39;t know what it is, just replace everything to the right of the : in the lines between the --- right at the top). Edit the deck, making sure to separate your slides by a blank line followed by three dashes ---.</p>
+<p>git config --global user.name &quot;<a href="mailto:john.b.gavin@gmail.com">john.b.gavin@gmail.com</a>&quot;
+git config --global user.email &quot;<a href="mailto:john.b.gavin@gmail.com">john.b.gavin@gmail.com</a>&quot;
+ssh-keygen -t rsa -C &quot;<a href="mailto:john.b.gavin@gmail.com">john.b.gavin@gmail.com</a>&quot; </p>
+
+<p>Your identification has been saved in /home/rstudio/.ssh/id_rsa.
+Your public key has been saved in /home/rstudio/.ssh/id_rsa.pub.
+The key fingerprint is:</p>
+
+<p>In RStudio, go to menu Tools / Global options / Git SVN / View public key and copy the key to your Github account setting (Edit profile / SSH keys / Add SSH key).</p>
+
+<p>To check that ssh-authentication works, try to run
+ssh -T <a href="mailto:git@github.com">git@github.com</a></p>
+
+<p>git config remote.origin.url <a href="mailto:git@github.com">git@github.com</a>:JohnGavin/slidifyTest.git</p>
+
+<h2>Slidify</h2>
+
+<p>This step generates a html slide deck from index.Rmd. It is a static file, which means that you can open it in your browser locally and it should display fine.</p>
+
+<pre><code class="r">slidify(&quot;index.Rmd&quot;)
+</code></pre>
+
+<pre><code>## 
+## 
+## processing file: index.Rmd
+</code></pre>
+
+<pre><code>## 
+  |                                                                       
+  |                                                                 |   0%
+  |                                                                       
+  |......................                                           |  33%
+##   ordinary text without R code
+## 
+## 
+  |                                                                       
+  |...........................................                      |  67%
+## label: unnamed-chunk-2
+## 
+  |                                                                       
+  |.................................................................| 100%
+##   ordinary text without R code
+</code></pre>
+
+<pre><code>## output file: index.md
+</code></pre>
+
+<hr>
+
+<h2>Publish</h2>
+
+<p>Publish your deck to github. 
+Login with your github account and create a new repository. 
+Note that Github will prompt you to add a README file, but just use the defaults so that your repo is empty. 
+You will need to have git installed on your computer and be able to push to github using SSH</p>
+
+<h1>replace USER and REPO with your username and reponame</h1>
+
+<p>publish(user = &quot;<a href="mailto:john.b.gavin@gmail.com">john.b.gavin@gmail.com</a>&quot;, repo = &quot;slidifyTest&quot;)
+publish(user = &quot;github.com&quot;, repo = &quot;johngavin/slidifyTest&quot;, host = &#39;github&#39;)</p>
+
+<p><a href="mailto:git@github.com">git@github.com</a>:JohnGavin/slidifyTest.git
+<a href="https://github.com/JohnGavin/slidifyTest.git">https://github.com/JohnGavin/slidifyTest.git</a>
+<a href="https://gmail.com.github.com/slidifyTest">https://gmail.com.github.com/slidifyTest</a> <a href="https://github.com/JohnGavin/slidifyTest">https://github.com/JohnGavin/slidifyTest</a></p>
+
+<p><a href="https://johngavin.github.com/slidifyTest">https://johngavin.github.com/slidifyTest</a> <a href="https://github.com/JohnGavin/slidifyTest">https://github.com/JohnGavin/slidifyTest</a></p>
+
+<h2>Read-And-Delete</h2>
 
 <ol>
 <li>Edit YAML front matter</li>
@@ -102,20 +140,14 @@ Finally, it will open index.Rmd for you to edit.</p>
     <ul>
       <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=1 title=''>
+        data-slide=1 title='<a href="http://www.r-bloggers.com/rstudio-pushing-to-github-with-ssh-authentication/">http://www.r-bloggers.com/rstudio-pushing-to-github-with-ssh-authentication/</a>'>
          1
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=2 title='Slide 2'>
+        data-slide=2 title=''>
          2
-      </a>
-    </li>
-    <li>
-      <a href="#" target="_self" rel='tooltip' 
-        data-slide=3 title=''>
-         3
       </a>
     </li>
   </ul>
