@@ -43,7 +43,7 @@
     <!-- SLIDES -->
     <slide class="" id="slide-1" style="background:;">
   <hgroup>
-    <h3><a href="http://www.r-bloggers.com/rstudio-pushing-to-github-with-ssh-authentication/">http://www.r-bloggers.com/rstudio-pushing-to-github-with-ssh-authentication/</a></h3>
+    <h3><a href="http://applyr.blogspot.co.uk/2014/05/rstudio-pushing-to-github-with-ssh.html">http://applyr.blogspot.co.uk/2014/05/rstudio-pushing-to-github-with-ssh.html</a></h3>
   </hgroup>
   <article data-timings="">
     <p>If RStudio prompts you for a username and password every time you try to push your project to Github, open the shell (Git menu: More/Shel...) and do the following:</p>
@@ -106,8 +106,16 @@ You will need to have git installed on your computer and be able to push to gith
 
 <h1>replace USER and REPO with your username and reponame</h1>
 
-<p>publish(user = &quot;<a href="mailto:john.b.gavin@gmail.com">john.b.gavin@gmail.com</a>&quot;, repo = &quot;slidifyTest&quot;)
+<p>publish(user = &quot;JohnGavin&quot;, repo = &quot;slidifyTest&quot;)
 publish(user = &quot;github.com&quot;, repo = &quot;johngavin/slidifyTest&quot;, host = &#39;github&#39;)</p>
+
+<p>getOption(&#39;github.user&#39;)
+  system(&#39;git add .&#39;)
+  system(&#39;git commit -a -m &quot;publishing deck&quot;&#39;)
+  system(sprintf(&#39;git push <a href="mailto:git@github.com">git@github.com</a>:%s/%s gh-pages&#39;, username, repo))
+  link = sprintf(&#39;http://%s.github.com/%s&#39;, username, repo)
+  message(&#39;You can now view your slide deck at &#39;, link)
+  browseURL(link)</p>
 
 <p><a href="mailto:git@github.com">git@github.com</a>:JohnGavin/slidifyTest.git
 <a href="https://github.com/JohnGavin/slidifyTest.git">https://github.com/JohnGavin/slidifyTest.git</a>
@@ -140,7 +148,7 @@ publish(user = &quot;github.com&quot;, repo = &quot;johngavin/slidifyTest&quot;,
     <ul>
       <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=1 title='<a href="http://www.r-bloggers.com/rstudio-pushing-to-github-with-ssh-authentication/">http://www.r-bloggers.com/rstudio-pushing-to-github-with-ssh-authentication/</a>'>
+        data-slide=1 title='<a href="http://applyr.blogspot.co.uk/2014/05/rstudio-pushing-to-github-with-ssh.html">http://applyr.blogspot.co.uk/2014/05/rstudio-pushing-to-github-with-ssh.html</a>'>
          1
       </a>
     </li>

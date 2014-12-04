@@ -13,7 +13,7 @@ knit        : slidify::knit2slides
 
 
 
-### http://www.r-bloggers.com/rstudio-pushing-to-github-with-ssh-authentication/
+### http://applyr.blogspot.co.uk/2014/05/rstudio-pushing-to-github-with-ssh.html
 If RStudio prompts you for a username and password every time you try to push your project to Github, open the shell (Git menu: More/Shel...) and do the following:
 
 
@@ -51,9 +51,17 @@ Note that Github will prompt you to add a README file, but just use the defaults
 You will need to have git installed on your computer and be able to push to github using SSH
 
 # replace USER and REPO with your username and reponame
-publish(user = "john.b.gavin@gmail.com", repo = "slidifyTest")
+publish(user = "JohnGavin", repo = "slidifyTest")
 publish(user = "github.com", repo = "johngavin/slidifyTest", host = 'github')
 
+getOption('github.user')
+  system('git add .')
+  system('git commit -a -m "publishing deck"')
+  system(sprintf('git push git@github.com:%s/%s gh-pages', username, repo))
+  link = sprintf('http://%s.github.com/%s', username, repo)
+  message('You can now view your slide deck at ', link)
+  browseURL(link)
+  
 git@github.com:JohnGavin/slidifyTest.git
 https://github.com/JohnGavin/slidifyTest.git
 https://gmail.com.github.com/slidifyTest https://github.com/JohnGavin/slidifyTest
